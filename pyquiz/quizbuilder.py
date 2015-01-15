@@ -97,6 +97,14 @@ def explanation(explanation_text):
         return question
     return dec
 
+def category(category):
+    def dec(question):
+        if not isinstance(question, Question):
+            raise ValueError("Category must take a Question object as an argument.")
+        question.category = category
+        return question
+    return dec
+
 class _RedirectStdout(object):
     def __enter__(self):
         self.orig_stdout = sys.stdout
